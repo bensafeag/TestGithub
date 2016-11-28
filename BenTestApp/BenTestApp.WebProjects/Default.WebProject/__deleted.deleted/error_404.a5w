@@ -1,0 +1,101 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <title>Safe Ag Systems - Page Not Found</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Google Font: Open Sans -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="css/sas_css/fontawesome/css/font-awesome.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/sas_css/bootstrap.min.css">
+
+  <!-- BQuick access buttons CSS -->
+  <link rel="stylesheet" href="css/sas_css/cssqb/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sas_css/cssqb/style.css">
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="css/sas_css/sas_private.css">
+  <!-- <link rel="stylesheet" href="./css/custom.css"> -->
+
+  <!-- Favicon -->
+	<script src="javascript/sas_core.js"></script>
+	<script src="javascript/sas_helpers.js"></script>
+	<script src="javascript/sas_private.js"></script>
+
+
+<%a5
+Delete tmpl_SAS_CONTACT
+DIM tmpl_SAS_CONTACT as P
+tmpl_SAS_CONTACT = a5w_load_component("sas_contact") ''SYSTEM GENERATED COMMENT - PLEASE DO NOT REMOVE (LOAD:sas_contact)
+
+'Override settings start -----------------------------------------
+with tmpl_SAS_CONTACT
+.alias = "SAS_CONTACT"
+_dialogFilename = "sas_contact"
+end with 
+'Override settings end -----------------------------------------
+
+delete x_SAS_CONTACT
+dim x_SAS_CONTACT as p
+x_SAS_CONTACT = a5w_run_Component(tmpl_SAS_CONTACT) 'SYSTEM GENERATED COMMENT - PLEASE DO NOT REMOVE (RUN:tmpl) (EDIT:sas_contact)
+
+?x_SAS_CONTACT.Output.Head.JavaScript
+?x_SAS_CONTACT.Output.Head.CSS_Link
+
+?x_SAS_CONTACT.Output.Head.Title 
+%>
+
+
+<!--Alpha Five Temporary Code Start - Will be automatically removed when page is published -->
+<!--CSS for tmpl -->
+<link rel="stylesheet" type="text/css" href="file:///C:/Program Files (x86)/a5V12/css/sas_css/style.css">
+<!--Alpha Five Temporary Code End -->
+
+</head>
+<body >
+	<div id="wrapper">
+	<%a5 a5w_include("public_include_header.a5w")%> 
+	<div class="container" style="PADDING-BOTTOM: 40px; box-shadow: -40px 0px 100px -100px #c4c4c4, 40px 0px 100px -100px #c4c4c4">
+			<div class="container" style="PADDING-BOTTOM: 40px"></div>
+				<div class="container">
+					<div class="row" style="MARGIN-LEFT: 0px; MARGIN-RIGHT: 0px" >
+						<div class="col-md-6" style="PADDING-LEFT: 0px; PADDING-RIGHT: 25px">
+							<div class="portlet portlet-default">
+								<div class="portlet">
+								</div><!-- /.portlet-header -->
+								<h3 style=" TEXT-TRANSFORM: uppercase;  COLOR: #dd742d;font-weight:bold">404 ERROR</h3>
+								<p class="font-cond-l lts-sm fg-text" contenteditable="false" style="font-size:18px;padding-left:40px;">
+									<p style="text-align:center;">The page you are looking for cannot be found. We're sorry for the inconvenience.<br/>To return to the home page, please click <a href="index.a5w">here</a>.</p>
+								</p>
+							</div><!-- /.portlet -->
+						</div><!-- /.col -->
+						<div class="col-md-6" style="PADDING-LEFT: 0px; PADDING-RIGHT: 25px">
+							<div class="portlet portlet-default">
+								<div class="portlet"></div><!-- /.portlet-header -->
+								<h3 class="font-cond-b fg-text-d lts-sm" contenteditable="false">Contact Us</h3>				
+								<%a5 ?x_SAS_CONTACT.Output.Body.Dialog2_HTML %>
+								<%a5 ?a5dialogHelper_generateCORSHeaders() %>
+							</div><!-- /.portlet -->
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.container -->
+			</div>
+		</div>
+		<%a5 a5w_include("public_include_footer.a5w")%> 
+	</div><!-- /#wrapper -->
+
+</body>
+</html>
+

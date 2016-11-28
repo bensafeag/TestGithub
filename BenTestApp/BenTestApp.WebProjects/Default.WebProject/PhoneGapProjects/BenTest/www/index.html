@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<META HTTP-EQUIV="MSThemeCompatible" content="Yes"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<style type="text/css">
+html { -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-user-select: none; -ms-touch-action: none;}
+.A5container {float:left;padding:0px;}
+.A5CWLayout {padding: 4px; float: left; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;}
+.A5GridHideErrorCol .A5GridErrorCol {display:none; }
+.A5GridRowErrorIcon {display:none;}
+.A5GridHasRowError .A5GridRowErrorIcon {display:inline;}
+.A5GridRowViewMode {display:block;}
+.A5GridRowEditMode {display:none;}
+.A5GridRowInEditMode .A5GridRowViewMode {display:none;}
+.A5GridRowInEditMode .A5GridRowEditMode {display:block;}
+.A5GridRowDirty {display:none;}
+.A5GridRowClean {display:inline;}
+.A5GridRowIsDirty .A5GridRowDirty {display:inline;}
+.A5GridRowIsDirty .A5GridRowClean {display:none;}
+.errorText {color:red;font-size:8pt;}
+.errorTextHighlight {font-weight:bold;font-size:8pt;}
+.errorTip {color:red;background:#fffafa url('a5images/boxsize8x8fillUp5FDiagonalWhite3A232552C2392C239.png');border:1px solid #f88;margin-top:2px;padding:2px;font-size:8pt;}
+.errorInput {color:red;border:1px solid red;margin:1px;}
+.errorInputHighlight {color:red;border:2px solid red;margin:0px;}
+.A5SelectedButton {opacity:.5;filter:alpha(opacity=50);}
+.A5InvisibleLock {background: rgba(0,0,0,0); }
+
+.A5AccordionTitleOn, .A5AccordionTitleOff, .A5AccordionTitleDisabled {display: block;border: 1px solid #999;padding: 2px;text-decoration: none;cursor: pointer;margin-bottom: 2px; padding: 2px}
+.A5AccordionPane {border: 1px solid #999;border-top: none;margin-bottom: 2px;margin-top: -2px;}
+.A5TabTopOn, .A5TabTopOff, .A5TabTopDisabled {display: block;float: left;border: 1px solid #999;border-bottom: none;margin-right: 2px;padding: 2px;text-decoration: none;cursor: pointer;}
+.A5TabTopOn {margin-bottom: -1px;padding-bottom: 3px;}
+.A5TabBottomOn, .A5TabBottomOff, .A5TabBottomDisabled {display: block;float: left;border: 1px solid #999;margin-right: 2px;padding: 2px;text-decoration: none;cursor: pointer;}
+.A5TabBottomOn {border-top: none;padding-top: 3px;}
+.A5TabLeftOn, .A5TabLeftOff, .A5TabLeftDisabled {display: block;border: 1px solid #999;margin-bottom: 2px;padding: 2px;text-decoration: none;cursor: pointer;}
+.A5TabLeftOn {margin-right: -1px;padding-right: 3px;border-right: none;}
+.A5TabRightOn, .A5TabRightOff, .A5TabRightDisabled {display: block;border: 1px solid #999;border-left: none;margin-bottom: 2px;padding: 2px;text-decoration: none;cursor: pointer;}
+.A5TabRightOn {margin-left: -1px;padding-left: 3px;}
+.A5TabTopPane, .A5TabBottomPane, .A5TabLeftPane, .A5TabRightPane {border: 1px solid #999; padding: 2px;}
+
+
+.A5TabBand {border: 1px solid #999; padding: 0px;}
+.A5TabBandTabOn, .A5TabBandTabOff, .A5TabBandTabDisabled {position: relative;display: block;border: 1px solid #999;border-bottom: none;margin-right: 2px;margin-top: 2px;padding: 2px;text-decoration: none;cursor: pointer;white-space: nowrap;}
+.A5TabBandTabOn {margin-bottom: -1px;padding-bottom: 3px;}
+.A5TabBandSeparator {border: none;border-top: 1px solid #999;height: 3px;padding: 0px;font: 0pt arial;}
+.A5TabBandLeftScroll {position: relative;display: block;padding: 2px;margin-bottom: -1px;padding-bottom: 3px;text-decoration: none;border: 1px solid #999;border-left: none;border-bottom: none;}
+.A5TabBandRightScroll {position: relative;display: block;padding: 2px;margin-bottom: -1px;padding-bottom: 3px;text-decoration: none;border: 1px solid #999;border-right: none;border-bottom: none;}
+.A5TabBandTabDisabled, .A5TabTopDisabled, .A5TabLeftDisabled, .A5TabRightDisabled, .A5TabBottomDisabled, .A5AccordionTitleDisabled {opacity: .5; filter: alpha(opacity: 50)}
+.A5Window {-moz-border-radius: 3px; -webkit-border-radius: 3px;}
+.A5WindowLock{border: 1px solid #000;background: #222;opacity: .25;filter: alpha(opacity: 25);}
+
+.A5AccordionTitleOn:hover, .A5AccordionTitleOff:hover, .A5TabBandTabOff:hover, .A5TabTopOff:hover, .A5TabLeftOff:hover, .A5TabRightOff:hover, .A5TabBottomOff:hover{text-decoration: underline;}
+
+.A5MenuItem {text-decoration:none;}
+.A5DialogRSSeparator {border-top: 1px dotted #ccc; line-height:5px; margin-top: 5px;}
+.A5DialogRSFooter {margin-top: 10px;}
+
+
+
+
+
+
+</style>
+
+<link rel="stylesheet" type="text/css" href="css/sas_css/style.css">
+
+<link rel="stylesheet" type="text/css" href="css/sas_css/components/a5SimpleForm/style.css">
+<link rel="stylesheet" type="text/css" href="css/sas_css/components/a5navsysToolbar/style.css">
+<style>
+</style>
+
+<script src="phonegap.js"></script>
+
+
+<script type="text/javascript" src="javascript/a5.js"></script>
+<script type="text/javascript" src="javascript/a5_url.js"></script>
+
+
+<script type="text/javascript" src="javascript/A5jQueryWithUI.js"></script>
+
+<script>
+	if(typeof jQuery != 'undefined') jQuery.noConflict();
+</script>
+
+
+
+<script type="text/javascript" language="javascript">
+A5._listBoxDefaults={titleClassName:'sas_cssColumnTD',separatorClassName:'sas_cssNavSysTBMenuSeparator',item:{className:'sas_cssDataLink sas_cssNavSysTBMenuOff',selectedClassName:'sas_cssNavSysTBMenuOn',style:'display:block;text-decoration:none;cursor:pointer;'}}
+A5._treeDefaults={node:{className:'sas_cssNavSysTBMenuOff',selectedClassName:'sas_cssNavSysTBMenuOn',labelClassName:'sas_cssDataLink',branch:{expandedImage:'css/A5System/Vista/tree/bc.png',collapsedImage:'css/A5System/Vista/tree/bo.png'}},branch:{nullImage:'css/A5System/Vista/tree/n.png'}}
+A5._windowDefaults={className:'sas_cssPageBODY sas_cssFormTABLE A5Window',outerWrapClassName:' A5WindowInner',innerWrapClassName:'A5WindowBodyOuter',activeClassName:'A5WindowActive',lockUIClassName:'A5WindowLock',title:{className:'sas_cssColumnTD A5WindowTitle',style:'cursor:move;',tools:{defaults:{'close':{action:'close',name:'close',image:'a5images/windowbuttonclose.png'}}}},header:{className:'sas_cssAltDataTD A5WindowHeader'},tbar:{className:'sas_cssAltDataTD A5WindowTBAR'},body:{className:'sas_cssDataTD A5WindowBody',style:'overflow:auto;'},bbar:{className:'sas_cssAltDataTD A5WindowBBar'},buttons:{className:'sas_cssFooterTD A5WindowButtons',style:'text-align:right;'},footer:{className:'sas_cssAltDataTD A5WindowFooter'},resizer:{className:'sas_cssFooterTD A5WindowResize',style:'padding:4px;',thumbImage:'css/A5System/Images/resizeThumb.gif'},_buttonDefaults:{className:'sas_cssButton A5WindowButton',width:'.75in'}}
+A5._menuDefaults={className:'sas_cssNavSysTBMenuCont',innerClassName:'sas_cssNavSysTBMenu',item:{className:'A5MenuItem sas_cssNavSysTBMenuOff',selectedClassName:'sas_cssNavSysTBMenuOn',hoverClassName:'sas_cssNavSysTBMenuOn',cascadeClassName:'sas_cssNavSysTBMenuCas',separatorClassName:'sas_cssNavSysTBMenuSeparator',radioImage:'css/A5System/Images/menuradio.png',checkImage:'css/A5System/Images/menucheck.png'}}
+
+A5.serverSideDateFormat = 'dd/MM/yyyy';
+</script>
+
+
+
+<script type="text/javascript" src="_phoneGapSettings.js"></script>
+
+</head>
+<body class="sas_cssPageBODY">
+<iframe style="display:none;" id="DLG1.__IFRAME1"></iframe>
+<input type="hidden" value="" id="DLG1.PARAMETERBUCKET"/>
+<input type="file" style="position:absolute; top:-1000px;visibility:hidden;" accept="image/*" id="DLG1._GETPHOTO"/><input type="file" style="position:absolute; top:-1000px;visibility:hidden;" name="files[]" multiple = "" id="DLG1._GETFILEMULTI"/><input type="file" style="position:absolute; top:-1000px;visibility:hidden;" name="files[]" id="DLG1._GETFILE"/>
+<script type="text/javascript" language="javascript">
+A5.themes.add('sas_css',{tab: {base: {tabClassName: 'sas_cssFormTABLE sas_cssColumnTD A5TabTopOff',tabSelectedClassName: 'sas_cssFormTABLE sas_cssDataTD A5TabTopOn',tabDisabledClassName: 'sas_cssFormTABLE sas_cssColumnTD A5TabTopDisabled',paneClassName: 'sas_cssFormTABLE sas_cssDataTD A5TabTopPane'},bottom: {tabClassName: 'sas_cssFormTABLE sas_cssColumnTD A5TabBottomOff',tabSelectedClassName: 'sas_cssFormTABLE sas_cssDataTD A5TabBottomOn',tabDisabledClassName: 'sas_cssFormTABLE sas_cssColumnTD A5TabBottomDisabled',paneClassName: 'sas_cssFormTABLE sas_cssDataTD A5TabBottomPane'},left: {tabClassName: 'sas_cssFormTABLE sas_cssColumnTD A5TabLeftOff',tabSelectedClassName: 'sas_cssFormTABLE sas_cssDataTD A5TabLeftOn',tabDisabledClassName: 'sas_cssFormTABLE sas_cssColumnTD A5TabLeftDisabled',paneClassName: 'sas_cssFormTABLE sas_cssDataTD A5TabLeftPane'},right: {tabClassName: 'sas_cssFormTABLE sas_cssColumnTD A5TabRightOff',tabSelectedClassName: 'sas_cssFormTABLE sas_cssDataTD A5TabRightOn',tabDisabledClassName: 'sas_cssFormTABLE sas_cssColumnTD A5TabRightDisabled',paneClassName: 'sas_cssFormTABLE sas_cssDataTD A5TabRightPane'}},accordion: {base: {titleClassName: 'sas_cssFormTABLE sas_cssColumnTD A5AccordionTitleOff',titleSelectedClassName: 'sas_cssFormTABLE sas_cssColumnTD A5AccordionTitleOn',titleDisabledClassName: 'sas_cssFormTABLE sas_cssColumnTD A5AccordionTitleDisabled',paneClassName: 'sas_cssFormTABLE sas_cssDataTD A5AccordionPane'}},datePicker: {base: {className: 'Table',calendar: {daysOfWeek: {className: 'calendar'},weeksOfYear: {className: 'calendar',headerClassName: 'calendar'},date: {className: 'workday',weekendClassName: 'weekend',todayClassName: 'today',item: {className: 'weekDay',selectedClassName: 'selectedDay'}}},navigator: {header: {className: 'calendar',prevIcon: 'css/sas_css/PrevMonth.png',nextIcon: 'css/sas_css/NextMonth.png',item: {className: 'weekDay',selectedClassName: 'selectedDay'}},panel: {className: 'weekDay',edit: {className: 'CalendarControls'},item: {className: 'weekDay',selectedClassName: 'selectedDay'}}}}},timePicker: {base: {edit: {className: 'sas_cssInput',buttonClassName: 'sas_cssDataLink',buttonImage: 'css/sas_css/DescOn.png'},meridianClassName: 'sas_cssDataLink'}},window: {base: {_defaultTools: {close: {action: 'Close',image: 'a5images/windowbuttonclose.png'}}}},button: {base: {className: 'sas_cssButton',hoverClassName: 'sas_cssButtonHover',pressedClassName: 'sas_cssButtonPressed',disabledClassName: 'sas_cssButtonDisabled'}},buttonDropdown: {base: {className: 'sas_cssButton',hoverClassName: 'sas_cssButtonHover',pressedClassName: 'sas_cssButtonPressed',disabledClassName: 'sas_cssButtonDisabled',dropdown: {icon: 'css/sas_css/DescOn.png'},style: {verticalAlign: 'middle'}}},buttonSplit: {base: {className: 'sas_cssButton',hoverClassName: 'sas_cssButtonHover',pressedClassName: 'sas_cssButtonPressed',disabledClassName: 'sas_cssButtonDisabled',dropdown: {icon: 'css/sas_css/DescOn.png'},style: {verticalAlign: 'middle'}}},editButtonGroup: {base: {container: {editClassName: 'sas_cssInput',button: {html: '<img src="css/sas_css/DescOn.png" />'}}}}});
+A5.u.drag.useDragScrolling = 'auto';
+if(typeof DLG1_DlgObj == 'object') {
+	DLG1_DlgObj._destroy();
+	try {
+		delete DLG1_DlgObj;
+	} catch(e) {
+		DLG1_DlgObj = undefined;
+	}
+};
+;if(typeof DLG1_PanelObj != 'undefined') {
+	var ele = $(DLG1_PanelObj.getPanelId());
+	if(ele) {
+		if(ele.parentNode) ele.parentNode.removeChild(ele);
+	}
+	delete DLG1_PanelObj;
+}
+;window['DLG1_PanelObj'] = new A5.PanelNavigator([
+{
+	name: 'PANELCARD_2',
+	src: new A5.PanelCard({
+	theme: 'sas_css',
+	body: {
+		content: {
+			type: 'html',
+			src: '<div class="A5CWLayout" style="width: 2in" >\n\t<input\ttype="text" id="DLG1.V.R1.CURRUSERID" title=""     class="sas_cssInput" style="width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;"    name="V.R1.CURRUSERID"    value=""    />\n\n</div><br  style="clear:both; " />\n<div class="A5CWLayout" style="width: 2in" >\n\t<input\ttype="text" id="DLG1.V.R1.CURRCOMPANYID" title=""     class="sas_cssInput" style="width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;"    name="V.R1.CURRCOMPANYID"    value=""    />\n\n</div><br  style="clear:both; " />\n<div class="A5CWLayout" style="width: 2in" >\n\t<input\ttype="text" id="DLG1.V.R1.USERFULLNAME" title=""     class="sas_cssInput" style="width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;"    name="V.R1.USERFULLNAME"    value=""    />\n\n</div><br  style="clear:both; " />\n<div class="A5CWLayout" style="width: " >\n\t<button type="button" id="DLG1.V.R1.BUTTON_1"    ></button>\n</div><br  style="clear:both; " />\n<div style="clear: both; font: 0px arial; height: 0px; width: 0px;"></div>'
+		},
+		scroll: {
+			axis: 'both',
+			stopPropogation: false,
+			pull: {
+				y: 'auto',
+				x: 'auto'
+			},
+			indicator: {
+				show: true,
+				h: {
+					show: true,
+					location: 'right',
+					offset: '0px',
+					left: '0px',
+					right: '0px'
+				},
+				v: {
+					show: true,
+					location: 'right',
+					offset: '0px',
+					top: '0px',
+					bottom: '0px'
+				}
+			}
+		}
+	},
+	header: {
+		html: '<div style="display:none;"></div>'
+	},
+	footer: {
+	},
+	overlay: {
+	}
+})
+},
+{
+	name: 'PANELCARD_1',
+	src: new A5.PanelCard({
+	theme: 'sas_css',
+	body: {
+		content: {
+			type: 'html',
+			src: '\t<div class="">\n\t\t<div id="DLG1_DIVCONTAINER_11b68f4c_f911_43f1_8a43_3a8104c1363d"   ><img src="css/A5System/Images/wait.gif" /> Working...</div>\n\t</div><br  style="clear:both; " />\n\t\t\n<div style="clear: both; font: 0px arial; height: 0px; width: 0px;"></div>'
+		},
+		scroll: false
+	},
+	header: {
+		html: '<div style="display:none;"></div>'
+	},
+	footer: {
+	},
+	overlay: {
+	}
+})
+}
+],{
+	type: 'carousel',
+	flow: 'ltr',
+	loopNavigate: false,
+	onPanelActivate: function() {var panelName = this.state.activePanel;
+if(panelName == 'PANELCARD_1') {
+	var runJS = true;
+	if(typeof this.state._render != 'undefined') {
+		var rs = this.state._render[panelName];
+		if(typeof rs !=  'undefined') {
+			if(rs == true) {
+				runJS = false;
+			}
+		}
+	}	
+	if(runJS) {
+		DLG1_DlgObj._functions.runAction_11b68f4c_f911_43f1_8a43_3a8104c1363d();;
+		if(typeof this.state._render == 'undefined') this.state._render = {};
+		this.state._render[panelName] = true;
+	}
+}
+DLG1_DlgObj.refreshClientSideComputations();},
+	onPanelActivateComplete: function() {if(this.state.activePanel == 'PANELCARD_1') { 
+	var pChild = DLG1_DlgObj.getChildObject('SMAUDIOEMBED','UX');
+	if(pChild) pChild._executeEvent('onPanelActivate');
+};},
+	onSize: function() {;if(typeof DLG1_DlgObj != 'undefined') {
+	if(typeof DLG1_DlgObj._findActiveLayoutRule != 'undefined') { 
+		DLG1_DlgObj._findActiveLayoutRule();
+	}
+}},
+	theme: 'sas_css',
+	header: {
+		show: false
+	},
+	footer: {
+	},
+	overlay: {
+	},
+	controls: {
+		prev: {
+			has: false
+		},
+		next: {
+			has: false
+		},
+		back: {
+			has: false
+		},
+		forward: {
+			has: false
+		}
+	},
+	body: {
+	},
+	animation: {
+		duration: 400
+	}
+})
+var ele = window['DLG1_PanelObj'].create('DLG1.R1');
+		var panelRootId = '';
+		var flagSizeToParent = true;
+		var wf_alias = 'DLG1';
+		if(panelRootId != '') { 
+			if (!$(panelRootId)) panelRootId = '';
+		}
+		if(panelRootId != '') { 
+			$(panelRootId).appendChild(ele);
+			if(flagSizeToParent) { 
+				window[wf_alias + '_PanelObj'].bindSize('parent');
+			}
+		} else { 
+			document.body.insertBefore(ele,document.body.firstChild);
+			window[wf_alias + '_PanelObj'].bindSize('window');
+		}
+DLG1_PanelObj._panelPath = {
+	PANELCARD_2: 'PANELCARD_2',
+	PANELCARD_1: 'PANELCARD_1'
+}
+DLG1_PanelObj._displayNames = {
+PANELCARD_2 : 'PANELCARD_2',PANELCARD_1 : 'PANELCARD_1',PANELNAVIGATOR_1 : 'PANELNAVIGATOR_1'
+};
+if(typeof DLG1_DlgObj == 'object') DLG1_DlgObj._destroy();
+var DLG1_DlgObj = new A5.DialogComponentHelper('DLG1',{
+	ajaxURL: '54.153.228.212/UX_SHELL_AUDIO.a5wcmp?__virtualPage=__a5RunDialog.a5w&__dialogFilename=UX_SHELL_AUDIO&__alias=DLG1&__unsaved=no',
+	_embeddedMode: false,
+	_livePreviewInBuilder: false,
+	componentGUID: '65f0e1b1-5840-4ca7-a80c-a053986845f6',
+	columnInfo: {'CURRUSERID': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C'  },'CURRCOMPANYID': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C'  },'USERFULLNAME': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C'  }},
+	originalValues: [{
+	'CURRUSERID': 'loustory',
+	'CURRCOMPANYID': 'Demo7',
+	'USERFULLNAME': 'David'
+}],
+	defaultValues: {
+	CURRUSERID: 'loustory',
+	CURRCOMPANYID: 'Demo7',
+	USERFULLNAME: 'David'
+},
+	datePickerMonthNames: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+	datePickerDayNames: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+	datePickerTodayButton: 'Today',
+	datePickerCloseButton: '',
+	datePickerFirstDayOfWeek: 1,
+	resetFormMessage: 'Are you sure you want to reset the form?',
+	resetFormTitle: 'Warning',
+	resetFormIcon: 'a5images/sysquestion.png',
+	dirtyFormMessage: 'You must first save your changes or cancel changes by clicking the Reset button.',
+	dirtyFormTitle: 'Notice',
+	dirtyFormIcon: 'a5images/sysinformation.png',
+	deleteRecordDialogTitle: 'Delete Record',
+	deleteRecordDialogMessage: 'Are you sure you want to delete this record?',	
+	ssDateFormat: 'dd/MM/yyyy',
+	styleName: 'sas_css',
+	_fieldHelpers_DIALOG2: [],
+	parentComponentAlias: '',
+	submitIfHasClientSideErrors: true, 
+	rowErrors: {
+				showMessageBox: false,
+				messageBoxTitle: 'Error',
+				style: 'color: red; width: 6in; height: 2in;'
+		},
+	fieldErrors: {
+		type: 'block', 
+		className: 'errorText',
+		inputClassName: 'sas_cssInputError',
+		edit: { 
+			container: { className: 'sas_cssInputError'}
+		},
+		icon: 'a5images/genericerror.png',
+		global: {
+			contId: 'DLG1.GLOBALERRORS',
+			hoverClassName: 'errorTextHighlight',
+			hoverInputClassName: 'errorInputHighlight'
+		}
+	}
+	});
+DLG1_DlgObj._onOrientationChange =  function(e) { ;
+DLG1_DlgObj._findActiveLayoutRule();
+;  };
+A5.__componentObj = DLG1_DlgObj;
+DLG1_DlgObj._tabObjects = [];
+DLG1_DlgObj._functions.runAction_11b68f4c_f911_43f1_8a43_3a8104c1363d = function() {
+		var go = new Object();
+		go.dialog2Name = 'sas_Mobile_Audio_Report_Live';
+	go.type = 'dialog2';
+	go.alias = 'DLG1_SMAUDIOEMBED';
+	go.workingMessage = '<img src="css/A5System/Images/wait.gif" /> Working...';
+	go.flagTimer = 'F';
+	go.flagQueryEcho = 'F';
+	go.flagDebugMode = 'F';
+	go.userFilter = '';
+	go.baseFilter = '';
+	go.userOrder = '';
+	go.overrideSettings = 'style_name=`sas_css`'+'||';
+	go.arguments = '';
+	go.localArguments = '';
+	go.linkDefinition = '';
+	go.placeHolderValues = '';
+	go.parameterBucket = $gvs('DLG1.PARAMETERBUCKET');
+	go.argumentValueBucket = $gvs('DLG1.ARGUMENTVALUES');
+	go.a5_default_path = 'C_colon_|A5Webroot|livepreview';
+	go.onLoadCompleteJavascript = '';
+	if(typeof DLG1_DlgObj.gridId != 'undefined') go._thisGridAlias = DLG1_DlgObj.gridId;
+	if(typeof DLG1_DlgObj.dialogId != 'undefined') go._thisGridAlias = DLG1_DlgObj.dialogId;
+	var panelCardId = DLG1_DlgObj.panelGetId('PANELCARD_1','body');
+if($(panelCardId + '.SCROLLWRAPPER')) panelCardId = panelCardId + '.SCROLLWRAPPER';
+go.dialog2Div = panelCardId;
+	A5.component.runGenericComponent(go);
+}
+DLG1_DlgObj.fieldHelpers['CURRUSERID'] = new A5.Edit({
+	watermark: {
+		text: 'Curr User Id'
+	}
+});
+DLG1_DlgObj.fieldHelpers['CURRCOMPANYID'] = new A5.Edit({
+	watermark: {
+		text: 'Curr Company Id'
+	}
+});
+DLG1_DlgObj.fieldHelpers['USERFULLNAME'] = new A5.Edit({
+	watermark: {
+		text: 'User Full Name'
+	}
+});
+DLG1_DlgObj.lookups = {
+};
+DLG1_DlgObj.setStateInfo({
+	__dialogGuid: 'fb6a3667-2a6a-46b1-8be4-5a0900fc9ba2',
+	argumentsBoundToCotrols: '',
+	__sgr: '',
+	__dtfmt: 'MM/dd/yyyy',
+	__tfmt: ''
+});
+DLG1_DlgObj._cascadingControls = [];
+DLG1_DlgObj._cascadingControlsChildren = [];
+DLG1_DlgObj.setStateInfo({ });
+A5.msgBox.theme = 'sas_css';
+A5.msgBox.buttonWidth = '1in';
+DLG1_DlgObj._defaultWindowTitleDirection = 'ltr';
+DLG1_DlgObj._controlContainers = {}
+DLG1_DlgObj._panelCardControls = {
+CURRUSERID:'PANELCARD_2',
+CURRCOMPANYID:'PANELCARD_2',
+USERFULLNAME:'PANELCARD_2'
+}
+DLG1_DlgObj._buttons = {};
+DLG1_DlgObj._buttons['BUTTON_1'] = new A5.Button({
+	layout: 'text',
+	style: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',
+	html: 'Audio',
+	onClick: function() { 
+},
+	theme: 'sas_css'
+});
+DLG1_DlgObj._buttons['BUTTON_1'].bind('DLG1.V.R1.BUTTON_1');
+DLG1_DlgObj.setVariables({});
+DLG1_DlgObj._dataBoundControls = [];
+DLG1_DlgObj._primaryTableAlias = '';
+DLG1_DlgObj._hasPanels = true;
+DLG1_DlgObj._hasOnSynchronizeEvent = false;
+A5.__dtfmt = 'MM/dd/yyyy';A5.__tfmt = '';
+A5.__flagWorkingPreview = false;
+A5.__flagIIS = false;
+A5.__flagSimulateIIS = true;
+DLG1_DlgObj._functions.calcOrientation = function() { 
+	if(typeof DLG1_DlgObj == 'undefined') return '';
+	var orientation = DLG1_DlgObj.getOrientation();
+	if( orientation == 'landscape') {
+			//landscape
+			if(DLG1_DlgObj._orientation != 'landscape') {
+				DLG1_DlgObj._fireWatches(1);	
+				DLG1_DlgObj._orientation = 'landscape';
+				DLG1_DlgObj._executeEvent('onOrientationChange',{orientation: 'landscape'});
+			}
+	} else {
+		//portrait
+		if(DLG1_DlgObj._orientation != 'portrait') {
+				DLG1_DlgObj._fireWatches(1);	
+				DLG1_DlgObj._orientation = 'portrait';
+				DLG1_DlgObj._executeEvent('onOrientationChange',{orientation: 'portrait'});
+			}
+	}
+}
+	A5.flags.cordovaLoaded = true;
+	try {
+		document.addEventListener('deviceready', function() { 
+			DLG1_DlgObj._executeEvent('onCordovaReady',{});
+			DLG1_DlgObj._executeEvent('onPhoneGapReady',{});
+			DLG1_DlgObj._cordovaReady = true;
+			navigator.geolocation.getAccuratePosition = function(geolocationSuccess, geolocationError, options) {
+	var _lastCheckedPosition = null;
+	var _locationEventCount = 0;
+	options = options || {};
+	options.context = this;
+    function _checkLocation(pos) {
+        _lastCheckedPosition = pos;
+        _locationEventCount++;
+        if ((pos.coords.accuracy <= options.desiredAccuracy) && (_locationEventCount > options.ignoreResultCount)) {
+            clearTimeout(_timerID);
+            navigator.geolocation.clearWatch(_watchID);
+            _foundPosition(pos);
+        } 
+    }
+    function _stopLocationCheck() {
+    	 var error = {};
+    	 error.code = 0;
+    	 error.message = 'Timeout: No results';
+        navigator.geolocation.clearWatch(_watchID);
+        _lastCheckedPosition ? _foundPosition(_lastCheckedPosition) : geolocationError.call(options.context,error);
+    }
+    function _onError(error) {
+        clearTimeout(_timerID);
+        navigator.geolocation.clearWatch(_watchID);
+        geolocationError.call(options.context,error);
+    }
+    function _foundPosition(pos) {
+        geolocationSuccess.call(options.context,pos);
+    }
+    if (!options.maxWait) {            
+    	options.maxWait = 10000; 
+    }	
+    if (!options.desiredAccuracy) {
+    	  options.desiredAccuracy = 20; 
+    }
+    if (!options.timeout) {
+        options.timeout = options.maxWait;
+	 }
+	 if (!options.ignoreResultCount) {
+	 		options.ignoreResultCount = 1;
+	 }
+    options.maximumAge = 0; 
+    options.enableHighAccuracy = true; 
+    var _watchID = navigator.geolocation.watchPosition(_checkLocation, _onError, options);
+    var _timerID = setTimeout(_stopLocationCheck, options.maxWait); 
+}
+		} , false);	
+	}
+	catch(err) {}
+DLG1_DlgObj._waitGif = 'css/A5System/Images/wait.gif';
+DLG1_DlgObj._embeddedUXComponents = {
+'SMAUDIOEMBED' : {arguments: []}
+}
+DLG1_DlgObj._layoutMode = 'containerwidth';
+DLG1_DlgObj._responsiveRulesMode = 'firsttrue';
+DLG1_DlgObj.__controlNesting = {
+}
+DLG1_DlgObj._listsDV = [];
+DLG1_DlgObj._listControls = [];
+DLG1_DlgObj._localStorageSettings = {namespace: 'ALPHA_65f0e1b158404ca7a80ca053986845f6',friendlyName: '',description: '',persistVariableValues: false,__version: 1,persistComponentState: false,workingPreviewTestingFolder: '',restore: {variables: false,data: false,state: false},compressData: false,minify: false,variablesToNotPersist: '',workingPreviewTestingMode: 'Browser',compressListData: false}
+DLG1_DlgObj.__r = ['3rkeltoSdQc=']
+DLG1_DlgObj._staticHTMLMode = false
+DLG1_DlgObj._EDITOR_EDITORSET = {};
+DLG1_DlgObj.styleName = 'sas_css';
+DLG1_DlgObj.styleVersion = -1
+DLG1_DlgObj.framesInfo = {
+};
+DLG1_DlgObj._noPersist = []
+$e.add('DLG1.V.R1.BUTTON_1',A5.d.evnts.click,function(e) {
+DLG1_DlgObj.panelSetActive('PANELCARD_1',true);
+},this,false,'DLG1.V.R1.BUTTON_1');
+DLG1_DlgObj.prepare();DLG1_DlgObj.populate(DLG1_DlgObj.originalValues[0]);
+DLG1_DlgObj._fireWatches(1);
+
+
+if(!A5.flags.isMobile) $e.add(window,'resize',DLG1_DlgObj._functions.calcOrientation);
+else $e.add(window,'orientationchange',DLG1_DlgObj._orientationChangeHandler,DLG1_DlgObj,true);
+DLG1_DlgObj._functions.calcOrientation();
+
+
+
+
+
+
+setTimeout(function() { },0);
+
+
+DLG1_DlgObj._executeEvent('onInitializeComplete');
+DLG1_DlgObj.initialized = true;
+
+
+
+
+
+
+DLG1_DlgObj._onRenderComplete = function() { DLG1_DlgObj._runJSOnLoad(); DLG1_DlgObj._findActiveLayoutRule(); }; 
+
+setTimeout(function() { var p = DLG1_DlgObj.panelGet('PANELNAVIGATOR_1'); if(p._sizing == 'window') { p._sizeWindow();} else { p.refresh(); } },100);
+setTimeout(function() {DLG1_DlgObj._executeEvent('onRenderComplete'); DLG1_DlgObj.flagRenderComplete = true;  DLG1_DlgObj._restoreFromLocalStorage(); },1);
+
+var o2 = 'portrait';
+if(window.innerHeight < window.innerWidth) o2 = 'landscape';
+DLG1_DlgObj._screen = {h: window.innerHeight, w: window.innerWidth, o: o2};
+
+DLG1_DlgObj._getOnlineStatus();
+try {
+window.addEventListener("offline",function() { DLG1_DlgObj._fireOnConnectionChangeEvent() });
+window.addEventListener("online",function() { DLG1_DlgObj._fireOnConnectionChangeEvent() });
+} catch(err){}
+
+
+setTimeout(function() {$e.execute('device.screen','a5resize')},1);
+setTimeout(function() { },10);;
+DLG1_DlgObj._activeLanguage = '<Default>';
+</script>
+<script>
+
+</script>
+</body>
+</html>
